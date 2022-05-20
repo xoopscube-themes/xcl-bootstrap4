@@ -1,0 +1,55 @@
+<div class="row">
+
+    <{* ------- order content first *}>
+    <div class="col-md-9 order-md-1">
+
+        <{if !empty($xoops_contents)}>
+
+            <div class="content"><{$xoops_contents}></div>
+
+        <{else}>
+        <p><{$xoops_theme}></p>
+        <{* include file="$xoops_theme/component/inc_block_center_custom.html" *}>
+
+        <{* Default Database Template *}>
+        <{* include file="db:legacy_app_front_page.html *"}>
+
+        <{* Theme Template *}>
+        <{* include file="$xoops_theme/templates/legacy/legacy_app_front_page.html" *}>
+
+        <{/if}>
+
+    </div>
+
+
+    <{* ------- order column blocks second *}>
+    <div class="col-md-3 order-md-2">
+
+        <{if $xoops_showlblock}>
+            <{foreach item=block from=$xoops_lblocks name=lbloop}>
+                <h4 class="block-title">
+                    <{if !$block.title|strstr:"none"}><{$block.title}><{/if}>
+                    <{if $xoops_isadmin}><{include file="$xoops_theme/component/_inc_block_edit.html"}><{/if}>
+                </h4>
+                <div class="btnList">
+                    <{$block.content}>
+                </div>
+            <{/foreach}>
+        <{/if}>
+
+        <{if $xoops_showrblock}>
+            <{foreach item=block from=$xoops_rblocks name=rbloop}>
+                <h4 class="block-title">
+                    <{if !$block.title|strstr:"none"}><{$block.title}><{/if}>
+                    <{if $xoops_isadmin}><{include file="$xoops_theme/component/_inc_block_edit.html"}><{/if}>
+                </h4>
+                <div class="btnList">
+                    <{$block.content}>
+                </div>
+            <{/foreach}>
+        <{/if}>
+
+    </div>
+
+
+</div>
